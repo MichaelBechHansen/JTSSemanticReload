@@ -26,7 +26,7 @@
 @implementation UITableViewController (JTSSemanticReload)
 
 - (void)JTS_reloadDataPreservingSemanticContentOffset:(JTSSemanticReloadItemForIndexPath)itemForPathBlock
-                                 pathForItemBlock:(JTSSemanticReloadIndexPathForItem)pathForItemBlock {
+                                     pathForItemBlock:(JTSSemanticReloadIndexPathForItem)pathForItemBlock {
     
     NSArray *visibleCells = [self.tableView visibleCells];
     
