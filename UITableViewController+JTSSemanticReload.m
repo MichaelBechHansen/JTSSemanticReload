@@ -47,7 +47,6 @@
                 [reloadItem setRelativeYOffset:priorContentOffset - cell.frame.origin.y];
                 [visibleItems addObject:reloadItem];
             }
-            break;
         }
         
         [self.tableView reloadData];
