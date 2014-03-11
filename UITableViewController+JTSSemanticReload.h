@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef id (^	)(NSIndexPath *indexPathPriorToReload, UITableViewCell *cellPriorToReload);
 typedef NSIndexPath * (^JTSSemanticReloadIndexPathForItem)(id dataSourceItem);
-typedef id (^JTSSemanticReloadItemForIndexPath)(NSIndexPath *indexPath);
 
 @interface UITableViewController (JTSSemanticReload)
 
