@@ -59,7 +59,8 @@
         [self.tableView reloadData];
     }
     else {
-        CGFloat contentInsetTop = self.tableView.contentInset.top;
+        UIEdgeInsets contentInsets = self.tableView.contentInset;
+        CGFloat contentInsetTop = contentInsets.top;
         CGFloat priorContentOffset = self.tableView.contentOffset.y;
         NSMutableArray *visibleItems = [[NSMutableArray alloc] init];
         
@@ -111,6 +112,17 @@
                     // applied to the first cell.
                     UITableViewCell *targetCell = [self.tableView cellForRowAtIndexPath:targetIndexPath];
                     newOffset.y += targetCell.frame.origin.y;
+                }
+                
+                // Fix possible overscrolling at the top or bottom.
+                if (newOffset.y < 0 - contentInsetTop) {
+                    newOffset.y = 0 - contentInsetTop;
+                } else {
+                    CGFloat contentHeight = self.tableView.contentSize.height;
+                    CGFloat visibleHeight = self.tableView.bounds.size.height;
+                    if (newOffset.y + visibleHeight > contentHeight + contentInsets.bottom) {
+                        newOffset.y = contentHeight + contentInsets.bottom - visibleHeight;
+                    }
                 }
                 
                 [self.tableView setContentOffset:newOffset];
