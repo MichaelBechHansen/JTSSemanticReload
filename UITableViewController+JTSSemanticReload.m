@@ -82,7 +82,7 @@
             [self JTS_logThis:@"No data source items found for visible cells. Will reloadData only."];
         }
         else {
-            [self JTS_logThis:[NSString stringWithFormat:@"Found %lu data source items prior to reloading data: \n%@", visibleItems.count, visibleItems]];
+            [self JTS_logThis:[NSString stringWithFormat:@"Found %lu data source items prior to reloading data: \n%@", (unsigned long)visibleItems.count, visibleItems]];
         
             NSIndexPath *targetIndexPath = nil;
             JTSSemanticReloadItem *targetReloadItem = nil;
@@ -99,7 +99,7 @@
             if (targetIndexPath == nil) {
                 [self JTS_logThis:@"Unable to find an item whose offset can still be preserved. Will reloadData only."];
             } else {
-                [self JTS_logThis:[NSString stringWithFormat:@"Will preserve offset for item at new indexPath row: %lu section: %lu \nitem: %@", targetIndexPath.row, targetIndexPath.section, targetReloadItem]];
+                [self JTS_logThis:[NSString stringWithFormat:@"Will preserve offset for item at new indexPath row: %lu section: %lu \nitem: %@", (long)targetIndexPath.row, (long)targetIndexPath.section, targetReloadItem]];
                 
                 [self.tableView scrollToRowAtIndexPath:targetIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
                 
