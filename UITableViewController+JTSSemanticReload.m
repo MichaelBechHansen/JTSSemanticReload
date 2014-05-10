@@ -115,14 +115,18 @@
                 }
                 
                 // Fix possible overscrolling at the top or bottom.
-                if (newOffset.y < 0 - contentInsetTop) {
+                
+                CGFloat contentHeight = self.tableView.contentSize.height;
+                CGFloat visibleHeight = self.tableView.bounds.size.height;
+
+                if (visibleHeight >= contentHeight) {
                     newOffset.y = 0 - contentInsetTop;
-                } else {
-                    CGFloat contentHeight = self.tableView.contentSize.height;
-                    CGFloat visibleHeight = self.tableView.bounds.size.height;
-                    if (newOffset.y + visibleHeight > contentHeight + contentInsets.bottom) {
-                        newOffset.y = contentHeight + contentInsets.bottom - visibleHeight;
-                    }
+                }
+                else if (newOffset.y < 0 - contentInsetTop) {
+                    newOffset.y = 0 - contentInsetTop;
+                }
+                else if (newOffset.y + visibleHeight > contentHeight + contentInsets.bottom) {
+                    newOffset.y = contentHeight + contentInsets.bottom - visibleHeight;
                 }
                 
                 [self.tableView setContentOffset:newOffset];
