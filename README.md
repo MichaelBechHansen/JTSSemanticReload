@@ -27,7 +27,7 @@ Here's an example implementation:
 ```objc
 - (void)someDataModelDidUpdate:(id)model andStuff:(id)stuff {
 
-  [self JTS_reloadDataPreservingSemanticContentOffset:^id(NSIndexPath *indexPath) {
+  [self JTS_reloadDataPreservingSemanticContentOffset:^id(NSIndexPath *indexPathPriorToReload, UITableViewCell *cellPriorToReload) {
     return [self.tweetController tweetForIndexPath:indexPath];
   } pathForItemBlock:^NSIndexPath *(id dataSourceItem) {
     return [self.tweetController indexPathForTweet:(SomeTweet *)dataSourceItem];
