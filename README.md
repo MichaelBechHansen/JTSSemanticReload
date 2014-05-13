@@ -35,6 +35,6 @@ Here's an example implementation:
 }
 ```
 
-The method accepts two block arguments. The two blocks are called synchronously and may be called multiple times. One of them takes an `NSIndexPath` and returns a data source item, and the other takes a data source item and returns an `NSIndexPath`. The data source item can be any object you wish. It's up to your application to be able to derive an index path from the data source item and vice versa. For example, if you were writing a Twitter client, the data source item would probably be a tweet.
+The method accepts two block arguments. The two blocks are called synchronously and may be called multiple times. One of them takes the previous `NSIndexPath` and `UITableViewCell`, returning a data source item. The other takes a data source item and returns the new/current `NSIndexPath`. The data source item can be any object you wish. It's up to your application to be able to derive an updated index path from the data source item and vice versa. For example, if you were writing a Twitter client, the data source item would probably be a tweet.
 
 This method is safe to use with table views that have non-zero content insets, header views, and footer views.
